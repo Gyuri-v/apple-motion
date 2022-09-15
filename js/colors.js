@@ -9,7 +9,7 @@ const colors = (function () {
 	let currentColorInput = null;
 	let currentColorValue = null;
 	let currentColorName = '';
-	let currentColorIndex = 0;
+	let currentColorIndex = 0; 
 	let previousColorValue = '';
 	let previousColorIndex = 0;
 	let animationDirection = null;
@@ -46,12 +46,13 @@ const colors = (function () {
 		colorsGallery.dataset.previousName = previousColorValue;
 		colorsGallery.dataset.previousIndex = previousColorIndex;
 		colorsGallery.dataset.direction = animationDirection;
-		colorChipCurrent.innerText = currentColorName;
-
 		colorsGallery.dataset.animState = 'prepare';
 		setTimeout(function () {
 			colorsGallery.dataset.animState = 'animate';
 		}, 100);
+		setTimeout(function () {
+			colorChipCurrent.innerText = currentColorName;
+		}, 400);
 	}
 
 	init();

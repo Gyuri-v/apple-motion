@@ -406,23 +406,29 @@ table {
 @keyframes colorchip-anim-left {
   0% {
     transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+    opacity: 1;
   }
   20% {
     transform: perspective(var(--perspective)) translateZ(-327px) rotateY(-25deg) scale(2);
+    opacity: 0;
   }
   100% {
     transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+    opacity: 1;
   }
 }
 @keyframes colorchip-anim-right {
   0% {
     transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+    opacity: 1;
   }
   20% {
     transform: perspective(var(--perspective)) translateZ(-327px) rotateY(25deg) scale(2);
+    opacity: 0;
   }
   100% {
     transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+    opacity: 1;
   }
 }
 
