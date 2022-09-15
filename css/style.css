@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -56,37 +62,105 @@ table {
 .container {
   padding: 100px 0;
 }
+.container-main {
+  min-height: 100vh;
+  background-color: rgba(255, 165, 0, 0.3);
+}
 
 .content {
   width: 980px;
   margin: 0 auto;
 }
 
-.colorchip-area .colors {
+.content-overview {
+  padding: 80px 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: "GmarketSansMedium";
+}
+.content-overview .page-title {
+  margin-bottom: 40px;
+  font-size: 42px;
+  font-weight: 700;
+}
+.content-overview .page-list li {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+.content-overview .page-list li a {
+  display: inline-block;
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+.content-overview .page-list li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  height: 8px;
+  background-color: orange;
+  opacity: 0.5;
+  transition: width 0.3s;
+}
+.content-overview .page-list li a:hover::after {
+  width: 100%;
+}
+.content-overview .page-list li::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.content-colors {
+  --tile-width: 317px;
+  --perspective: 350px;
+}
+.content-colors .current-colorchip {
+  display: block;
+  padding: 50px 0 40px;
+  font-size: 50px;
+  font-weight: 800;
+  transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+  transform-origin: center center;
+  transform-style: preserve-3d;
+}
+.content-colors .colorchip-area .colors {
   display: inline-flex;
   padding-bottom: 2px;
 }
-.colorchip-area .color-item {
+.content-colors .colorchip-area .color-item {
   position: relative;
   width: 42px;
   box-sizing: border-box;
 }
-.colorchip-area .color-item[data-color-name=blue] label::before {
+.content-colors .colorchip-area .color-item[data-color-name=blue] label::before {
   background-color: #c0cfde;
 }
-.colorchip-area .color-item[data-color-name=purple] label::before {
+.content-colors .colorchip-area .color-item[data-color-name=purple] label::before {
   background-color: #e7d7e9;
 }
-.colorchip-area .color-item[data-color-name=midnight] label::before {
+.content-colors .colorchip-area .color-item[data-color-name=midnight] label::before {
   background-color: #31353a;
 }
-.colorchip-area .color-item[data-color-name=starlight] label::before {
+.content-colors .colorchip-area .color-item[data-color-name=starlight] label::before {
   background-color: #f0ece8;
 }
-.colorchip-area .color-item[data-color-name=red] label::before {
+.content-colors .colorchip-area .color-item[data-color-name=red] label::before {
   background-color: #e11c2a;
 }
-.colorchip-area .color-item input[type=radio] {
+.content-colors .colorchip-area .color-item input[type=radio] {
   appearance: none;
   position: absolute;
   top: 0;
@@ -97,7 +171,7 @@ table {
   border: none;
   opacity: 0;
 }
-.colorchip-area .color-item input[type=radio]:checked + label::after {
+.content-colors .colorchip-area .color-item input[type=radio]:checked + label::after {
   content: "";
   cursor: pointer;
   position: absolute;
@@ -111,17 +185,7 @@ table {
   box-sizing: border-box;
   background-color: transparent;
 }
-.colorchip-area .color-item input[type=radio]:checked + label .colorchip {
-  font-family: "SamsungOne700";
-}
-.colorchip-area .color-item input[type=radio].focus-visible + label {
-  outline: 2px dotted #000;
-}
-.bg-black .colorchip-area .color-item input[type=radio].focus-visible + label {
-  outline: 2px dotted #fff;
-}
-
-.colorchip-area .color-item label {
+.content-colors .colorchip-area .color-item label {
   display: block;
   position: relative;
   width: 100%;
@@ -130,7 +194,7 @@ table {
   box-sizing: border-box;
   cursor: pointer;
 }
-.colorchip-area .color-item label::before {
+.content-colors .colorchip-area .color-item label::before {
   content: "";
   cursor: pointer;
   position: absolute;
@@ -144,15 +208,11 @@ table {
   box-sizing: border-box;
   background-color: #ddd;
 }
-.colorchip-area .color-item label .colorchip {
+.content-colors .colorchip-area .color-item label .colorchip {
   position: absolute;
   text-indent: -9999px;
   font-size: 0;
   opacity: 0;
-}
-
-.content-colors {
-  --tile-width: 317px;
 }
 .content-colors .gallery {
   display: grid;
@@ -208,12 +268,6 @@ table {
   width: 648px;
   padding-bottom: 0;
 }
-.content-colors .gallery-tile .current-colorchip {
-  display: block;
-  padding: 50px 0 40px;
-  font-size: 50px;
-  font-weight: 800;
-}
 .content-colors .gallery-tile .desc {
   font-size: 20px;
   font-weight: 700;
@@ -232,7 +286,6 @@ table {
 .content-colors .gallery .asset-list .asset-wrap {
   position: absolute;
   opacity: 0;
-  transform: translateX(var(--tile-width));
 }
 .content-colors .gallery .asset-list .asset-wrap.on {
   opacity: 1;
@@ -273,26 +326,6 @@ table {
 .content-colors .gallery[data-anim-state=animate] .asset-wrap {
   transition: transform 1s cubic-bezier(0.8, 0, 0.2, 1), opacity 1.3s ease;
 }
-.content-colors .gallery[data-anim-state=animate][data-previous-name=blue] .asset-wrap-blue {
-  transform: translateX(calc(var(--tile-width) * -1));
-  opacity: 0;
-}
-.content-colors .gallery[data-anim-state=animate][data-previous-name=purple] .asset-wrap-purple {
-  transform: translateX(calc(var(--tile-width) * -1));
-  opacity: 0;
-}
-.content-colors .gallery[data-anim-state=animate][data-previous-name=midnight] .asset-wrap-midnight {
-  transform: translateX(calc(var(--tile-width) * -1));
-  opacity: 0;
-}
-.content-colors .gallery[data-anim-state=animate][data-previous-name=starlight] .asset-wrap-starlight {
-  transform: translateX(calc(var(--tile-width) * -1));
-  opacity: 0;
-}
-.content-colors .gallery[data-anim-state=animate][data-previous-name=red] .asset-wrap-red {
-  transform: translateX(calc(var(--tile-width) * -1));
-  opacity: 0;
-}
 .content-colors .gallery[data-anim-state=animate][data-current-name=blue] .asset-wrap-blue {
   transform: translateX(0);
   opacity: 1;
@@ -312,6 +345,85 @@ table {
 .content-colors .gallery[data-anim-state=animate][data-current-name=red] .asset-wrap-red {
   transform: translateX(0);
   opacity: 1;
+}
+.content-colors .gallery[data-direction=right] .asset-wrap {
+  transform: translateX(var(--tile-width));
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate] .current-colorchip {
+  animation-name: colorchip-anim-right;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0, 0, 0.33, 0.93);
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate][data-previous-name=blue] .asset-wrap-blue {
+  transform: translateX(calc(var(--tile-width) * -1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate][data-previous-name=purple] .asset-wrap-purple {
+  transform: translateX(calc(var(--tile-width) * -1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate][data-previous-name=midnight] .asset-wrap-midnight {
+  transform: translateX(calc(var(--tile-width) * -1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate][data-previous-name=starlight] .asset-wrap-starlight {
+  transform: translateX(calc(var(--tile-width) * -1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=right][data-anim-state=animate][data-previous-name=red] .asset-wrap-red {
+  transform: translateX(calc(var(--tile-width) * -1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=left] .asset-wrap {
+  transform: translateX(calc(var(--tile-width) * -1));
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate] .current-colorchip {
+  animation-name: colorchip-anim-left;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0, 0, 0.33, 0.93);
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate][data-previous-name=blue] .asset-wrap-blue {
+  transform: translateX(calc(var(--tile-width) * 1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate][data-previous-name=purple] .asset-wrap-purple {
+  transform: translateX(calc(var(--tile-width) * 1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate][data-previous-name=midnight] .asset-wrap-midnight {
+  transform: translateX(calc(var(--tile-width) * 1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate][data-previous-name=starlight] .asset-wrap-starlight {
+  transform: translateX(calc(var(--tile-width) * 1));
+  opacity: 0;
+}
+.content-colors .gallery[data-direction=left][data-anim-state=animate][data-previous-name=red] .asset-wrap-red {
+  transform: translateX(calc(var(--tile-width) * 1));
+  opacity: 0;
+}
+
+@keyframes colorchip-anim-left {
+  0% {
+    transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+  }
+  20% {
+    transform: perspective(var(--perspective)) translateZ(-327px) rotateY(-25deg) scale(2);
+  }
+  100% {
+    transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+  }
+}
+@keyframes colorchip-anim-right {
+  0% {
+    transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+  }
+  20% {
+    transform: perspective(var(--perspective)) translateZ(-327px) rotateY(25deg) scale(2);
+  }
+  100% {
+    transform: perspective(var(--perspective)) translateZ(0px) rotateY(0deg) scale(1);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
