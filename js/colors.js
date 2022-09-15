@@ -1,9 +1,9 @@
 // 
 const colors = (function () {
-	const colors = document.querySelector('.content-colors');
-	const colorsGallery = colors.querySelector('.gallery');
-	const colorChipCurrent = colors.querySelector(".current-colorchip");
-	const colorInputs = colors.querySelectorAll("input");
+	const contentColors = document.querySelector('.content-colors');
+	const colorsGallery = contentColors.querySelector('.gallery');
+	const colorChipCurrent = contentColors.querySelector(".current-colorchip");
+	const colorInputs = contentColors.querySelectorAll("input");
 	
 	let currentColorItem = null;
 	let currentColorInput = null;
@@ -15,7 +15,7 @@ const colors = (function () {
 	let animationDirection = null;
 
 	const init = function () {
-		if ( colors.querySelector('input:checked') == null ){
+		if ( contentColors.querySelector('input:checked') == null ){
 			colorInputs[0].checked = true;
 			currentColorValue = 0;
 		} else {
@@ -33,8 +33,8 @@ const colors = (function () {
 	const onChange = function () {
 		previousColorValue = currentColorValue;
 		previousColorIndex = currentColorIndex;
-		currentColorInput = colors.querySelector('input:checked');
-		currentColorItem = colors.querySelector(`.color-item[data-color-name="${currentColorInput.value}"]`);
+		currentColorInput = contentColors.querySelector('input:checked');
+		currentColorItem = contentColors.querySelector(`.color-item[data-color-name="${currentColorInput.value}"]`);
 		currentColorValue = currentColorInput.value;
 		currentColorName = currentColorItem.innerText;
 		currentColorIndex = indexInParent(currentColorItem);
